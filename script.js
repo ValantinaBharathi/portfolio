@@ -30,7 +30,7 @@ const navLinks = document.querySelector('.nav-links');
 
 if (navToggle) {
     navToggle.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        navLinks.classList.toggle('active');
     });
 }
 
@@ -38,7 +38,7 @@ if (navToggle) {
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
-            navLinks.style.display = 'none';
+            navLinks.classList.remove('active');
         }
     });
 });
@@ -69,17 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 });
-
-// Form submission handling (if you add a contact form later)
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here
-        alert('Thank you for your message! I will get back to you soon.');
-        this.reset();
-    });
-}
 
 // Typing effect for hero text (optional)
 function typeWriter(element, text, speed = 50) {
@@ -120,5 +109,13 @@ document.querySelectorAll('.cert-link').forEach(link => {
         const certName = this.closest('.cert-item').querySelector('h4').textContent;
         console.log(`Certificate viewed: ${certName}`);
         // You can add Google Analytics or other tracking here
+    });
+});
+
+// Resume download tracking
+document.querySelectorAll('a[download]').forEach(link => {
+    link.addEventListener('click', function() {
+        console.log('Resume downloaded');
+        // You can add download tracking here
     });
 });

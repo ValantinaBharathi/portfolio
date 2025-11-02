@@ -60,6 +60,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -87,6 +88,23 @@ body {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+.nav-resume {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 25px;
+    font-weight: 600 !important;
+}
+
+.nav-resume:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.nav-resume::after {
+    display: none;
 }
 
 .nav-toggle {
@@ -151,6 +169,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -161,8 +180,11 @@ body {
     font-weight: 600;
     transition: var(--transition);
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     text-align: center;
+    justify-content: center;
 }
 
 .btn-primary {
@@ -182,6 +204,19 @@ body {
 }
 
 .btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.btn-resume {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.btn-resume:hover {
     background: white;
     color: var(--primary-color);
     transform: translateY(-3px);
@@ -606,6 +641,18 @@ section {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+    }
+    
+    .nav-links.active {
+        display: flex;
     }
     
     .nav-toggle {
@@ -662,6 +709,11 @@ section {
     .section-title {
         font-size: 2rem;
     }
+    
+    .nav-resume {
+        padding: 0.8rem 1.5rem !important;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -695,5 +747,15 @@ section {
     .cert-link {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
     }
 }
